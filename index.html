@@ -8,6 +8,7 @@
       name="description"
       content="Wise Choice Gunsmithing — family-owned and operated. Expert firearm repair, custom builds, cerakote finishing, and more."
     />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
   </head>
 
@@ -239,6 +240,46 @@
       </div>
     </section>
 
+    <!-- ===== Testimonials ===== -->
+    <section class="testimonials" id="testimonials">
+      <div class="container">
+        <h2 class="section-title">What Our Customers Say</h2>
+        <hr class="gold-divider" />
+        <p class="section-subtitle">
+          Trusted by firearm enthusiasts across the community.
+        </p>
+
+        <div class="testimonials-grid">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text">
+              "Outstanding work on my AR-15. The trigger job is butter smooth, and the Cerakote finish looks professional. Highly recommend!"
+            </p>
+            <p class="testimonial-author">- John D., Local Hunter</p>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text">
+              "Family-owned business with real expertise. Fixed my grandfather's old shotgun like new. Great people to work with."
+            </p>
+            <p class="testimonial-author">- Sarah M., Collector</p>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text">
+              "Custom build exceeded expectations. They listened to my requirements and delivered a rifle that shoots like a dream."
+            </p>
+            <p class="testimonial-author">- Mike R., Competitive Shooter</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== Contact ===== -->
     <section class="contact" id="contact">
       <div class="container">
@@ -310,11 +351,52 @@
     <footer>
       <div class="container">
         <p>&copy; 2026 Wise Choice Gunsmithing. All rights reserved.</p>
+        <div class="social-links">
+          <a href="#" target="_blank" aria-label="Facebook">📘 Facebook</a>
+          <a href="#" target="_blank" aria-label="Instagram">📷 Instagram</a>
+          <a href="#" target="_blank" aria-label="Twitter">🐦 Twitter</a>
+        </div>
       </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button id="back-to-top" aria-label="Back to top">↑</button>
+
     <!-- ===== Mobile Menu Script ===== -->
     <script>
+      // Scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+          }
+        });
+      }, observerOptions);
+
+      // Observe all sections except header
+      document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+      });
+
+      // Back to top button
+      const backToTopBtn = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.add('show');
+        } else {
+          backToTopBtn.classList.remove('show');
+        }
+      });
+
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
       // Mobile menu toggle
       document
         .querySelector(".menu-toggle")
