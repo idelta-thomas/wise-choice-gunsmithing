@@ -21,6 +21,7 @@
           <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#services">Services</a></li>
+            <li><a href="#shop">Shop</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
@@ -110,6 +111,93 @@
               shotguns, and handguns.
             </p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Shop ===== -->
+    <section class="shop" id="shop">
+      <div class="container">
+        <h2 class="section-title">Shop</h2>
+        <hr class="gold-divider" />
+        <p class="section-subtitle">
+          Browse our selection of firearms, ammunition, and apparel.
+        </p>
+
+        <!-- Category Filter Buttons -->
+        <div class="shop-filters">
+          <button class="filter-btn active" data-category="all">All</button>
+          <button class="filter-btn" data-category="firearms">Firearms</button>
+          <button class="filter-btn" data-category="ammo">Ammunition</button>
+          <button class="filter-btn" data-category="clothing">Clothing</button>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="product-grid">
+
+          <!-- Firearms -->
+          <div class="product-card" data-category="firearms">
+            <div class="product-image">[ Product Image ]</div>
+            <div class="product-info">
+              <span class="product-category">Firearms</span>
+              <h3>Product Name</h3>
+              <p class="product-price">$0.00</p>
+              <a href="#contact" class="btn btn-sm">Inquire</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-category="firearms">
+            <div class="product-image">[ Product Image ]</div>
+            <div class="product-info">
+              <span class="product-category">Firearms</span>
+              <h3>Product Name</h3>
+              <p class="product-price">$0.00</p>
+              <a href="#contact" class="btn btn-sm">Inquire</a>
+            </div>
+          </div>
+
+          <!-- Ammunition -->
+          <div class="product-card" data-category="ammo">
+            <div class="product-image">[ Product Image ]</div>
+            <div class="product-info">
+              <span class="product-category">Ammunition</span>
+              <h3>Product Name</h3>
+              <p class="product-price">$0.00</p>
+              <a href="#contact" class="btn btn-sm">Inquire</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-category="ammo">
+            <div class="product-image">[ Product Image ]</div>
+            <div class="product-info">
+              <span class="product-category">Ammunition</span>
+              <h3>Product Name</h3>
+              <p class="product-price">$0.00</p>
+              <a href="#contact" class="btn btn-sm">Inquire</a>
+            </div>
+          </div>
+
+          <!-- Clothing -->
+          <div class="product-card" data-category="clothing">
+            <div class="product-image">[ Product Image ]</div>
+            <div class="product-info">
+              <span class="product-category">Clothing</span>
+              <h3>Product Name</h3>
+              <p class="product-price">$0.00</p>
+              <a href="#contact" class="btn btn-sm">Inquire</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-category="clothing">
+            <div class="product-image">[ Product Image ]</div>
+            <div class="product-info">
+              <span class="product-category">Clothing</span>
+              <h3>Product Name</h3>
+              <p class="product-price">$0.00</p>
+              <a href="#contact" class="btn btn-sm">Inquire</a>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -227,11 +315,33 @@
 
     <!-- ===== Mobile Menu Script ===== -->
     <script>
+      // Mobile menu toggle
       document
         .querySelector(".menu-toggle")
         .addEventListener("click", function () {
           document.querySelector("nav ul").classList.toggle("active");
         });
+
+      // Shop category filter
+      document.querySelectorAll(".filter-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          // Update active button
+          document.querySelectorAll(".filter-btn").forEach(function (b) {
+            b.classList.remove("active");
+          });
+          btn.classList.add("active");
+
+          // Filter products
+          var category = btn.getAttribute("data-category");
+          document.querySelectorAll(".product-card").forEach(function (card) {
+            if (category === "all" || card.getAttribute("data-category") === category) {
+              card.style.display = "";
+            } else {
+              card.style.display = "none";
+            }
+          });
+        });
+      });
     </script>
   </body>
 </html>
